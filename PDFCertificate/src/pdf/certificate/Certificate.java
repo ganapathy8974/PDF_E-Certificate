@@ -39,7 +39,7 @@ public class Certificate {
 		doc.addPage(docpage);
 		PDPage page = doc.getPage(0);
 		
-		//Page Content Stream Object Creation of the PDF Doc.
+		//Page Content Stream Object Creation of the PDF Document.
 		PDPageContentStream content = new PDPageContentStream(doc, page);
 		
 		//Load the Background in Page
@@ -54,9 +54,9 @@ public class Certificate {
 		Color nameColor = new Color(253, 47, 111);
 		Color blackColor = Color.BLACK;
 		
-		//Load Name on the certificate 
+		//Load Name on the Certificate 
 		
-		//Select the Font
+		//Selecting the Font using file input stream
 		FileInputStream fontFileAllura = new FileInputStream("src\\fonts\\Allura-Regular.ttf");
 		PDType0Font nameFont = PDType0Font.load(doc, fontFileAllura, true);
 		FileInputStream fontFileLato = new FileInputStream("src\\fonts\\Lato-Regular_0.ttf");
@@ -82,7 +82,7 @@ public class Certificate {
 		float signDateWidth = latoFont.getStringWidth(signDate) / 1000 * signDateFontSize; // get your text width 
 		float signDateHeight = latoFont.getFontDescriptor().getFontBoundingBox().getHeight() / 1000 * signDateFontSize; // get your text height
 		
-		//Text Sign Name Append 
+		//Text Sign Text Append 
 		content.beginText();
 		//content.newLineAtOffset(680,150);
 		content.newLineAtOffset((page.getMediaBox().getWidth() - signDateWidth) / 2 + 303 , page.getMediaBox().getHeight() - 435 - signDateHeight); 
@@ -92,7 +92,7 @@ public class Certificate {
 		content.showText(signDate);		
 		content.endText();		
 		
-		//QR-Code Generation	
+		//QR-Code Generation and Printing	
 		QRCode qr = new QRCode();		
 		BufferedImage QRBufferedImage = qr.generateQR(qrData);
 		PDImageXObject QRImage = LosslessFactory.createFromImage(doc, QRBufferedImage);
@@ -101,14 +101,15 @@ public class Certificate {
 	    
 		//Certificate Content 
 		
-			//Content Parameters 
+		//Paragraph font size and margin 
 		float contentFontSize = 12;
 		float margin = 200;
 		PDRectangle mediabox = page.getMediaBox(); 
 		float width = mediabox.getWidth() - 2*margin; 
 		float leading = 1.5f * contentFontSize;
-		//passing the content parameters to paragraph method in the Text class. 
-		//That is return the lines as a Arraylist. 
+		
+		//passing the font size and margin to the paragraph method in the text class. 
+		//That is return the lines as a Arraylist.		
 		Text text = new Text(page);		
 		ArrayList<String> lines = text.paragraph(discription, latoFont, contentFontSize, width);
 		content.beginText();
