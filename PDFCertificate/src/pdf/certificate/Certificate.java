@@ -19,7 +19,7 @@ public class Certificate {
 	public static void main(String[] args) {
 		Certificate certificate = new Certificate();
 		String name="S.Ganapathy Ramasubramanian";
-		String discription="Has satisfactorily completed 5 moths of “Java Full Stack, MEAN Stack and MERN Stack” training on 1/01/2021 to 18/07/2022.";
+		String discription="Has satisfactorily completed 5 months of “Java Full Stack, MEAN Stack, and MERN Stack” training from 1/01/2021 to 18/07/2022.";
 		String qrData ="ASP21058";
 		String signDate="17/07/2021";
 		try {			
