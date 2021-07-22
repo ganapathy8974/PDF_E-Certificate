@@ -3,7 +3,6 @@ package pdf.certificate;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -19,18 +18,18 @@ public class Certificate {
 	public static void main(String[] args) {
 		Certificate certificate = new Certificate();
 		String name="S.Ganapathy Ramasubramanian";
-		String discription="Has satisfactorily completed 5 months of “Java Full Stack, MEAN Stack, and MERN Stack” training from 1/01/2021 to 18/07/2022.";
+		String description="Has satisfactorily completed 5 months of “Java Full Stack, MEAN Stack, and MERN Stack” training from 1/01/2021 to 18/07/2022.";
 		String qrData ="ASP21058";
 		String signDate="17/07/2021";
 		try {			
-			System.out.println(certificate.getCertificate(name, discription, qrData, signDate));
+			System.out.println(certificate.getCertificate(name, description, qrData, signDate));
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
 
 	}
 	
-	public String getCertificate(String name,String discription,String qrData,String signDate) throws Exception{	
+	public String getCertificate(String name,String description,String qrData,String signDate) throws Exception{	
 		
 		//Document and Page Creation
 		PDDocument doc = new PDDocument();
@@ -111,7 +110,7 @@ public class Certificate {
 		//passing the font size and margin to the paragraph method in the text class. 
 		//That is return the lines as a Arraylist.		
 		Text text = new Text(page);		
-		ArrayList<String> lines = text.paragraph(discription, latoFont, contentFontSize, width);
+		ArrayList<String> lines = text.paragraph(description, latoFont, contentFontSize, width);
 		content.beginText();
 		content.setFont(latoFont, contentFontSize);	 
 		float contentWidth = latoFont.getStringWidth(lines.get(0)) / 1000 * contentFontSize; // get your text width 
@@ -133,8 +132,8 @@ public class Certificate {
 			
 	   		
 		content.close();//Should close the Content Stream in final stage.		
-		doc.save("C:\\Users\\Ganu\\Desktop\\Final\\"+qrData+"-HIT-Certificate.pdf");//Save the Document Path as where you want.
-		doc.close();//Should close the doc final position 
+		doc.save("C:\\Users\\Ganu\\Desktop\\"+qrData+"-HIT-Certificate.pdf");//Save the Document Path as where you want.
+		doc.close();//Should close the doc final stage
 		return name+"'s E-Certificate Genarated succussfully";
 	}
 

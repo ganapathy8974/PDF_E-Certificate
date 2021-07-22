@@ -6,8 +6,7 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
 
 public class Text {
-	PDPage page;
-	public Text() {}
+	PDPage page;	
 	public Text(PDPage page) {
 		this.page = page;
 	}
