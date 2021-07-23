@@ -1,5 +1,4 @@
-																	PDF E - Certificate Project
-																	---------------------------
+Project Name : PDF E - Certificate													
 																	
 Application:
 ------------
